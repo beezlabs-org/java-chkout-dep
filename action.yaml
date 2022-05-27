@@ -1,0 +1,17 @@
+name: Java Checkout Install Dependencies
+description: Action to checkout a Java project and install dependencies
+inputs:
+  java:
+    description: Java version
+    required: false
+    default: "11"
+runs:
+  using: composite
+  steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    - name: Setup Java
+      uses: actions/setup-java@v1
+      with:
+        java-version: '${{ inputs.java }}'
